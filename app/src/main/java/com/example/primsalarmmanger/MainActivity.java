@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.primsalarmmanger.controller.TimeAlarm;
 import com.example.primsalarmmanger.controller.TimePickerFragment;
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         Intent intent = new Intent(this, TimeAlarm.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent,0);
         jadwal.set(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
+        Toast.makeText(this, "Terukir", Toast.LENGTH_SHORT).show();
     }
 
     private void cancelAlarm(){
