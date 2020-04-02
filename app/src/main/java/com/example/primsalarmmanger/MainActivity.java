@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         Intent intent = new Intent(this, TimeAlarm.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent,0);
         jadwal.set(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
+        Toast.makeText(this, "Terukir", Toast.LENGTH_SHORT).show();
     }
 
     private void cancelAlarm(){
