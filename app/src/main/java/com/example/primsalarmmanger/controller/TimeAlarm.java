@@ -11,6 +11,8 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import static androidx.core.app.ActivityCompat.startActivityForResult;
 
 public class TimeAlarm extends BroadcastReceiver {
@@ -19,33 +21,41 @@ public class TimeAlarm extends BroadcastReceiver {
 //    static final int ON_DO_NOT_DISTURB_CALLBACK_CODE= 1;
     static final String TAG = "MyActivity";
 
+
     @Override
     public void onReceive(Context context, Intent intent) {
-        requestMutePermissions(context);
-        Toast.makeText(context, "TerSet", Toast.LENGTH_LONG).show();
-    }
-
-    private void requestMutePermissions(Context context) {
-        try {
-            if (Build.VERSION.SDK_INT < 23) {
-                mode = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
-                mode.setRingerMode(AudioManager.RINGER_MODE_SILENT);
-                Toast.makeText(context, "Bisabisaji", Toast.LENGTH_SHORT).show();
-            } else if( Build.VERSION.SDK_INT >= 23 ) {
-                this.requestForDoNotDisturbPermissionOrSetDoNotDisturbForApi23AndUp(context);
-            }
-        } catch ( SecurityException e ) {
-
+//        requestMutePermissions(context);
+        try{
+            mode = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
+            mode.setRingerMode(mode.RINGER_MODE_SILENT);
+            Toast.makeText(context, "TerSet", Toast.LENGTH_LONG).show();
+        }catch (Exception ex){
+            Toast.makeText(context, ""+ex.getMessage(), Toast.LENGTH_LONG).show();
+            Log.i(TAG, ""+ex.getMessage());
         }
     }
 
-    private void requestForDoNotDisturbPermissionOrSetDoNotDisturbForApi23AndUp(Context context) {
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+//    private void requestMutePermissions(Context context) {
+//        try {
+//            if (Build.VERSION.SDK_INT < 23) {
+//                mode = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
+//                mode.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+//                Toast.makeText(context, "Bisabisaji", Toast.LENGTH_SHORT).show();
+//            } else if( Build.VERSION.SDK_INT >= 23 ) {
+//                this.requestForDoNotDisturbPermissionOrSetDoNotDisturbForApi23AndUp(context);
+//            }
+//        } catch ( SecurityException e ) {
+
+//        }
+//    }
+
+//    private void requestForDoNotDisturbPermissionOrSetDoNotDisturbForApi23AndUp(Context context) {
+//        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         // if user granted access else ask for permission
-        if ( notificationManager.isNotificationPolicyAccessGranted()) {
-            AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-            audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
-        } else{
+//        if ( notificationManager.isNotificationPolicyAccessGranted()) {
+//            AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+//            audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+//        } else{
             //Dibagian sini mau diperbaiki
 
             // Open Setting screen to ask for permisssion
@@ -54,13 +64,13 @@ public class TimeAlarm extends BroadcastReceiver {
 //            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //            startActivityForResult(intent);
 //            context.startActivity(intent);
-            Log.i(TAG, "Masih Kurang Jelas");
+//            Log.i(TAG, "Masih Kurang Jelas");
 //            AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
 //            audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
 
             //Dibagian sini mau diperbaiki
-        }
-    }
+//        }
+//    }
 
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, Intent data) {

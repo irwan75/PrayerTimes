@@ -6,20 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/marqueeText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Set Alarm"
-        android:id="@+id/btnSetAlarm"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:ellipsize="marquee"
+        android:focusable="auto"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
+        android:fadingEdge="horizontal"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:text="@string/informasi"
+        android:textSize="18sp"
+        android:background="@color/colorAbuAbu"
+        android:textStyle="bold|italic"
+        android:layout_alignParentTop="true"
+        android:paddingTop="2dp"
+        tools:ignore="EllipsizeMaxLines" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancel Alarm"
-        android:id="@+id/btnCancelAlarm"
-        android:layout_below="@+id/btnSetAlarm"
-        android:layout_centerHorizontal="true"/>
+        android:text="@string/status_button_alarm"
+        android:id="@+id/btnSetAlarm"
+        android:textColor="@color/colorWhite"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:padding="15dp"
+        android:textSize="20sp"
+        />
 
 </RelativeLayout>

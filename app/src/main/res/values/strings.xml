@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PrimsAlarmManger</string>
+    <string name="status_button_alarm">Auto Silent Mati</string>
+    <string name="status_button">Status</string>
+    <string name="informasi">Silent Otomatis Akan Aktif Jika Adzan Sholat 5
+        Waktu Berkumandang dan Akan Normal Jika Sholat Telah Selesai</string>
 </resources>
