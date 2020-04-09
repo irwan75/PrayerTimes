@@ -4,7 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".view.MainActivity">
+
+    <include layout="@layout/layout_action_bar"
+        android:id="@+id/layActionBar"
+        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" />
 
     <TextView
         android:id="@+id/marqueeText"
@@ -22,7 +28,7 @@
         android:textSize="18sp"
         android:background="@color/colorAbuAbu"
         android:textStyle="bold|italic"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/layActionBar"
         android:paddingTop="2dp"
         tools:ignore="EllipsizeMaxLines" />
 
