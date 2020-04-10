@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
     <uses-permission android:name="android.permission.SET_ALARM" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <application
         android:allowBackup="true"
@@ -23,15 +24,6 @@
         </activity>
 
         <receiver android:name=".controller.TimeAlarmDhuhur" android:enabled="true" android:exported="true"/>
-        <receiver android:name=".controller.TimeAlarmDhuhurNormal" android:enabled="true" android:exported="true"/>
-        <receiver android:name=".controller.TimeAlarmAshar" android:enabled="true" android:exported="true"/>
-        <receiver android:name=".controller.TimeAlarmAsharNormal" android:enabled="true" android:exported="true"/>
-        <receiver android:name=".controller.TimeAlarmMaghrib" android:exported="true" android:enabled="true"/>
-        <receiver android:name=".controller.TimeAlarmMaghribNormal" android:enabled="true" android:exported="true"/>
-        <receiver android:name=".controller.TimeAlarmIsya" android:enabled="true" android:exported="true"/>
-        <receiver android:name=".controller.TimeAlarmIsyaNormal" android:enabled="true" android:exported="true"/>
-        <receiver android:name=".controller.TimeAlarmSubuh" android:enabled="true" android:exported="true"/>
-        <receiver android:name=".controller.TimeAlarmSubuhNormal" android:enabled="true" android:exported="true"/>
     </application>
 
 </manifest>

@@ -14,18 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.primsalarmmanger.R;
-import com.example.primsalarmmanger.controller.TimeAlarmAshar;
-import com.example.primsalarmmanger.controller.TimeAlarmAsharNormal;
 import com.example.primsalarmmanger.controller.TimeAlarmDhuhur;
-import com.example.primsalarmmanger.controller.TimeAlarmDhuhurNormal;
-import com.example.primsalarmmanger.controller.TimeAlarmIsya;
-import com.example.primsalarmmanger.controller.TimeAlarmIsyaNormal;
-import com.example.primsalarmmanger.controller.TimeAlarmMaghrib;
-import com.example.primsalarmmanger.controller.TimeAlarmMaghribNormal;
-import com.example.primsalarmmanger.controller.TimeAlarmSubuh;
-import com.example.primsalarmmanger.controller.TimeAlarmSubuhNormal;
-
-import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -58,15 +47,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public Calendar calendar(int hour, int minute){
-        Calendar c = Calendar.getInstance();
-        c.set(Calendar.HOUR_OF_DAY, hour);
-        c.set(Calendar.MINUTE, minute);
-        c.set(Calendar.SECOND, 0);
-
-        return c;
-    }
-
     public void buttonStartAction(int i){
         if (i==1){
             btnSetAlarm.setBackground(getDrawable(R.drawable.custom_button));
@@ -79,36 +59,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void startAlarm() {
         Intent dhuhur = new Intent(this, TimeAlarmDhuhur.class);
-        Intent ashar = new Intent(this, TimeAlarmAshar.class);
-        Intent maghrib = new Intent(this, TimeAlarmMaghrib.class);
-        Intent isya = new Intent(this, TimeAlarmIsya.class);
-        Intent subuh = new Intent(this, TimeAlarmSubuh.class);
-        Intent dhuhur1 = new Intent(this, TimeAlarmDhuhurNormal.class);
-        Intent ashar1 = new Intent(this, TimeAlarmAsharNormal.class);
-        Intent maghrib1 = new Intent(this, TimeAlarmMaghribNormal.class);
-        Intent isya1 = new Intent(this, TimeAlarmIsyaNormal.class);
-        Intent subuh1 = new Intent(this, TimeAlarmSubuhNormal.class);
 
         PendingIntent piDhuhur = PendingIntent.getBroadcast(this, 1, dhuhur,0);
-        PendingIntent piDhuhur1 = PendingIntent.getBroadcast(this, 1, dhuhur1, 0);
-        PendingIntent piAshar = PendingIntent.getBroadcast(this, 1, ashar,0);
-        PendingIntent piAshar1 = PendingIntent.getBroadcast(this, 1, ashar1, 0);
-        PendingIntent piMaghrib = PendingIntent.getBroadcast(this, 1, maghrib,0);
-        PendingIntent piMaghrib1 = PendingIntent.getBroadcast(this, 1, maghrib1, 0);
-        PendingIntent piIsya = PendingIntent.getBroadcast(this, 1, isya,0);
-        PendingIntent piIsya1 = PendingIntent.getBroadcast(this, 1, isya1, 0);
-        PendingIntent piSubuh = PendingIntent.getBroadcast(this, 1, subuh,0);
-        PendingIntent piSubuh1 = PendingIntent.getBroadcast(this, 1, subuh1, 0);
-        jadwal.setRepeating(AlarmManager.RTC, calendar(12, 04).getTimeInMillis(), AlarmManager.INTERVAL_DAY, piDhuhur);
-        jadwal.setRepeating(AlarmManager.RTC, calendar(12, 24).getTimeInMillis(), AlarmManager.INTERVAL_DAY, piDhuhur1);
-        jadwal.setRepeating(AlarmManager.RTC, calendar(15, 21).getTimeInMillis(), AlarmManager.INTERVAL_DAY, piAshar);
-        jadwal.setRepeating(AlarmManager.RTC, calendar(15, 41).getTimeInMillis(), AlarmManager.INTERVAL_DAY, piAshar1);
-        jadwal.setRepeating(AlarmManager.RTC, calendar(18, 04).getTimeInMillis(), AlarmManager.INTERVAL_DAY, piMaghrib);
-        jadwal.setRepeating(AlarmManager.RTC, calendar(18, 24).getTimeInMillis(), AlarmManager.INTERVAL_DAY, piMaghrib1);
-        jadwal.setRepeating(AlarmManager.RTC, calendar(19, 14).getTimeInMillis(), AlarmManager.INTERVAL_DAY, piIsya);
-        jadwal.setRepeating(AlarmManager.RTC, calendar(19, 34).getTimeInMillis(), AlarmManager.INTERVAL_DAY, piIsya1);
-        jadwal.setRepeating(AlarmManager.RTC, calendar(04, 46).getTimeInMillis(), AlarmManager.INTERVAL_DAY, piSubuh);
-        jadwal.setRepeating(AlarmManager.RTC, calendar(05, 06).getTimeInMillis(), AlarmManager.INTERVAL_DAY, piSubuh1);
+        jadwal.setInexactRepeating(AlarmManager.RTC, System.currentTimeMillis(), AlarmManager.INTERVAL_FIFTEEN_MINUTES, piDhuhur);
     }
 
     private void cancelAlarm(){
@@ -150,12 +103,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 cancelAlarm();
                 i=1;
             }else if (kondisi){
-
                 startAlarm();
                 btnSetAlarm.setText("Auto Silent Nyala");
                 tvTextRunning.setVisibility(View.VISIBLE);
                 tvTextRunning.setSelected(true);
-
                 buttonStartAction(1);
                 i=2;
             }
