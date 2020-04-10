@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         jadwal = (AlarmManager) getSystemService(ALARM_SERVICE);
         btnSetAlarm = findViewById(R.id.btnSetAlarm);
         tvTextRunning = findViewById(R.id.marqueeText);
-//        tvStatus = findViewById(R.id.statusButton);
-//        tvStatus.setBackground(getDrawable(R.drawable.custom_button));
         tvTextRunning.setVisibility(View.INVISIBLE);
 
         buttonStartAction(2);
