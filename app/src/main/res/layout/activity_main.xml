@@ -32,6 +32,17 @@
         android:paddingTop="2dp"
         tools:ignore="EllipsizeMaxLines" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/klik_button_dibawah_untuk_menyalakan"
+        android:layout_above="@+id/btnSetAlarm"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="3dp"
+        android:id="@+id/tvKeterangan"
+        android:textSize="13sp"
+        />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
